@@ -9,13 +9,15 @@ public class userDAO {
         con = DriverManager.getConnection("jdbc:mysql://localhost:3306/practice?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
     }
 
-    public User getAllUsers() throws SQLException {
+    public String getAllUsers() throws SQLException {
         PreparedStatement pst = con.prepareStatement("SELECT * FROM users");
         ResultSet rst;
+        String name;
 
         rst = pst.executeQuery();
         rst.absolute(1);
 
+        name = rst.getString("firstname");
         User user = new User();
         user.Firstname = rst.getString("firstname");
         user.Lastname = rst.getString("lastname");
@@ -24,8 +26,9 @@ public class userDAO {
         user.City = rst.getString("city");
         user.Location = rst.getString("location");
         user.State = rst.getString("state");
-        user.Type = rst,getInt("type");
+        user.Type = rst.getInt("type");
 
-        return user;
+        name = "poojan";
+        return name;
     }
 }

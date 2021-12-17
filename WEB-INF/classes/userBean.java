@@ -2,26 +2,11 @@ package mypack;
 
 import java.io.*;
 
-public class User {
-    User (String Firstname, String Lastname, String Email, String Mobile, String City, String Location, String State, int type) {
-        this.Firstname = Firstname;
-        this.Lastname = Lastname;
-        this.Email = Email;
-        this.Mobile = Mobile;
-        this.City = City;
-        this.Location = Location;
-        this.State = State;
-        this.type = type;
-    }
-    String Firstname, Lastname, Email, Mobile, City, Location, State;
-    int type;
-}
-
 public class userBean {
 
     /* All fields used in User class */
     String Firstname, Lastname, Email, Mobile, City, Location, State;
-    int type;
+    int Type;
 
     /* Setter method for Name */
     public void setFirstname(String Firstname) {
@@ -90,4 +75,13 @@ public class userBean {
     public String getState() {
         return this.State;
     }
+
+    public void setType(int Type) {
+        this.Type = Type;
+    }
+
+    public int getType() {
+        return this.Type;
+    } 
+
 }

@@ -27,13 +27,13 @@
      Welcome to Tomcat
   </description>
   <servlet>
-    <servlet-name>propertylogin</servlet-name>
-    <servlet-class>mypack.propertyController</servlet-class>
+    <servlet-name>user</servlet-name>
+    <servlet-class>mypack.userController</servlet-class>
   </servlet>
   
   <servlet-mapping>
-    <servlet-name>propertylogin</servlet-name>
-    <url-pattern>/propertylogin</url-pattern>
+    <servlet-name>user</servlet-name>
+    <url-pattern>/user</url-pattern>
   </servlet-mapping>
   
 </web-app>

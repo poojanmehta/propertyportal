@@ -1,10 +1,10 @@
 
 <%@ page import = "java.io.*,java.util.*,java.sql.*"%>
 <%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
-<%@ page import="mypack.propertyBean"%>
+<%@ page import="mypack.User" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix = "sql"%>
-<% User pb = (User)request.getAttribute("user");
+<% String user = (String)request.getAttribute("user");
 %>
 <!-- 
 <body>
@@ -41,12 +41,6 @@
 </body> -->
 
 <body>
-   <p><% out.print(user.Firstname;) %></p>
-   <p><% out.print(user.Firstname;) %></p>
-   <p><% out.print(user.Firstname;) %></p>
-   <p><% out.print(user.Firstname;) %></p>
-   <p><% out.print(user.Firstname;) %></p>
-   <p><% out.print(user.Firstname;) %></p>
-   <p><% out.print(user.Firstname;) %></p>
-   <p><% out.print(user.Firstname;) %></p>
+   <p><% out.print(user); %></p>
+
 </body>
