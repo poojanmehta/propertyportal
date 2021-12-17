@@ -4,12 +4,16 @@ import java.sql.*;
 
 public class userDAO {
     Connection con;
-    public void createConnection() throws SQLException, ClassNotFoundException{
-        Class.forName("com.mysql.jdbc.Driver");
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/propertyportal?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
-    }
 
     public User getAllUsers() throws SQLException {
+        Connector connector = new Connector();
+
+        try {
+            this.con = connector.createConnection();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         PreparedStatement pst = con.prepareStatement("SELECT * FROM users");
         ResultSet rst;
         String name;
