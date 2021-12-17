@@ -34,6 +34,8 @@
   <servlet-mapping>
     <servlet-name>user</servlet-name>
     <url-pattern>/user</url-pattern>
+    <url-pattern>/userregister</url-pattern>
+    <url-pattern>/userlogin</url-pattern>
   </servlet-mapping>
   
 </web-app>
