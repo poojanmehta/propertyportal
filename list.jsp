@@ -4,9 +4,9 @@
 <%@ page import="mypack.propertyBean"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix = "sql"%>
-<% propertyBean pb = (propertyBean)request.getAttribute("pb");
+<% User pb = (User)request.getAttribute("user");
 %>
-
+<!-- 
 <body>
     <h1> Marksheet </h1>
     <sql:setDataSource var = "snapshot" driver = "com.mysql.jdbc.Driver"
@@ -38,4 +38,15 @@
         </c:forEach>
      </table>
      Percentage : <c:out value="${per}" />
+</body> -->
+
+<body>
+   <p><% out.print(user.Firstname;) %></p>
+   <p><% out.print(user.Firstname;) %></p>
+   <p><% out.print(user.Firstname;) %></p>
+   <p><% out.print(user.Firstname;) %></p>
+   <p><% out.print(user.Firstname;) %></p>
+   <p><% out.print(user.Firstname;) %></p>
+   <p><% out.print(user.Firstname;) %></p>
+   <p><% out.print(user.Firstname;) %></p>
 </body>

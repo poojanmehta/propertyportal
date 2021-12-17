@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mypack.*;
 
-public class propertyController extends HttpServlet {
+public class userController extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        propertyBean pb = new propertyBean();
-        pb.setRollno(Integer.parseInt(request.getParameter("Rollno")));
+        userDAO ud = new userDAO();
+        User user = ud.getAllUsers();
 
-        request.setAttribute("pb",pb); 
+        request.setAttribute("user",user); 
 
         RequestDispatcher rd = request.getRequestDispatcher("list.jsp");
         rd.forward(request, response);
