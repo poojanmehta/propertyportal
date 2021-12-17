@@ -4,12 +4,12 @@ import java.sql.*;
 
 public class userDAO {
     Connection con;
-    public void createConnction() throws SQLException, ClassNotFoundException{
+    public void createConnection() throws SQLException, ClassNotFoundException{
         Class.forName("com.mysql.jdbc.Driver");
-        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/practice?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
+        con = DriverManager.getConnection("jdbc:mysql://localhost:3306/propertyportal?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", "root", "");
     }
 
-    public String getAllUsers() throws SQLException {
+    public User getAllUsers() throws SQLException {
         PreparedStatement pst = con.prepareStatement("SELECT * FROM users");
         ResultSet rst;
         String name;
@@ -17,7 +17,6 @@ public class userDAO {
         rst = pst.executeQuery();
         rst.absolute(1);
 
-        name = rst.getString("firstname");
         User user = new User();
         user.Firstname = rst.getString("firstname");
         user.Lastname = rst.getString("lastname");
@@ -28,7 +27,6 @@ public class userDAO {
         user.State = rst.getString("state");
         user.Type = rst.getInt("type");
 
-        name = "poojan";
-        return name;
+        return user;
     }
 }

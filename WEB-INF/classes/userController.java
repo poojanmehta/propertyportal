@@ -7,15 +7,15 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;  
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;
-import mypack.*;
+import mypack.userDAO;
 
 public class userController extends HttpServlet {
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        userDAO ud = new userDAO();
         
         try {
-        // User user = ud.getAllUsers();
-        String user = ud.getAllUsers();
+        userDAO ud = new userDAO();
+        ud.createConnection();
+        User user = ud.getAllUsers();
         request.setAttribute("user",user); 
         }
         catch (Exception e) {
