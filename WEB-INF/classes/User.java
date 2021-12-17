@@ -7,7 +7,6 @@ public class User {
     public int Type;
 
     User() {
-
     }
 
     User (String Firstname, String Lastname, String Email, String Mobile, String City, String Location, String State, int Type) {
