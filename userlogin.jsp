@@ -38,18 +38,8 @@
         <div class="col-sm-12 section-t8">
           <div class="row">
             <div class="col-md-7">
-              <form action="userregister" method="post" role="form" class="php-email-form">
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <input type="text" name="Firstname" class="form-control form-control-lg form-control-a" placeholder="First Name" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <input type="text" name="Lastname" class="form-control form-control-lg form-control-a" placeholder="Last Name" required>
-                    </div>
-                  </div>
+              <form action="userlogin" method="post" role="form" class="php-email-form">
+                <div class="row">s
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
                       <input name="Email" type="email" class="form-control form-control-lg form-control-a" placeholder="Email" required>
@@ -58,16 +48,6 @@
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
                       <input type="password" name="Password" class="form-control form-control-lg form-control-a" placeholder="Password" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <input type="text" name="Mobile" class="form-control form-control-lg form-control-a" placeholder="Mobile" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <input type="text" name="City" class="form-control form-control-lg form-control-a" placeholder="City" required>
                     </div>
                   </div>
                   <div class="col-md-12 my-3">
