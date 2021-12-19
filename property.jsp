@@ -56,9 +56,9 @@
           <a class="nav-link " href="index.html">Home</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link " href="">Account</a>
-        </li>
+      <button type="button" href="searchproperty.jsp" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+        <i class="bi bi-search"></i>
+      </button>
 
         </li>
       </ul>
