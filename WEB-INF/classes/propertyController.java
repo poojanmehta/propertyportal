@@ -17,6 +17,7 @@ public class propertyController extends HttpServlet {
   private static final String UPDATEPROP = "/updateproperty";
   private static final String ADDPROP = "/addproperty";
   private static final String DELPROP = "/delproperty";
+  private static final String AMEPROP = "/addamenities";
 
   public void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
@@ -30,7 +31,10 @@ public class propertyController extends HttpServlet {
           if (result == 0) {
             System.out.println("FAILURE");
           } else {
-            System.out.println("SUCCESS");
+            RequestDispatcher rd = request.getRequestDispatcher(
+              "addamenities.jsp"
+            );
+            rd.forward(request, response);
           }
         } catch (Exception e) {
           e.printStackTrace();
@@ -68,9 +72,7 @@ public class propertyController extends HttpServlet {
           ArrayList<property> result = pb.listproperty(request, response);
           if (result != null) {
             request.setAttribute("property_data", result);
-            RequestDispatcher rd = request.getRequestDispatcher(
-              "property.jsp"
-            );
+            RequestDispatcher rd = request.getRequestDispatcher("property.jsp");
             rd.forward(request, response);
           }
         } catch (Exception e) {
@@ -90,6 +92,15 @@ public class propertyController extends HttpServlet {
           e.printStackTrace();
         }
         break;
+      case AMEPROP:
+        try {
+            propertybean pb = new propertybean();
+            pb.addAmenities(request, response);
+            RequestDispatcher rd = request.getRequestDispatcher("userprofile.jsp");
+            rd.forward(request, response);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
   }
 }

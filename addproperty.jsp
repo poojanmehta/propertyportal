@@ -37,7 +37,7 @@
       <div class="row">
         <div class="col-lg-12 section-t8">
           <div class="row">
-            <div class="col-md-7">
+            <div class="col-md-8">
               <form action="addproperty" method="post" role="form" class="php-email-form">
                 <div class="row">
                   <div class="col-md-6 mb-3">
@@ -47,12 +47,36 @@
                   </div>
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
-                      <input type="text" name="address" class="form-control form-control-lg form-control-a" placeholder="address" required>
+                      <input type="text" rows="3" name="city" class="form-control form-control-lg form-control-a" placeholder="city" required>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label class="pb-2" for="Type">Enter Address</label>
+                  </div>
+                  <div class="col-md-8 mb-3">
+                    <div class="form-group">
+                      <textarea rows="2" name="address" class="form-control form-control-lg form-control-a" placeholder="address" required>
+                      </textarea>
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
-                      <input type="text" name="floor" class="form-control form-control-lg form-control-a" placeholder="floor" required>
+                      <input type="number" name="area" class="form-control form-control-lg form-control-a" placeholder="area" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input type="number" name="floor" class="form-control form-control-lg form-control-a" placeholder="floor" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input type="number" name="bedrooms" class="form-control form-control-lg form-control-a" placeholder="bedrooms" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input type="number" name="bathrooms" class="form-control form-control-lg form-control-a" placeholder="bathrooms" required>
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
@@ -62,23 +86,20 @@
                   </div>
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
-                      <input type="text" name="city" class="form-control form-control-lg form-control-a" placeholder="City" required>
+                      <select name="sell_type" class="form-control form-select form-control-a" id="Type">
+                        <option value="rent">For Rent</option>
+                        <option value="sale">For Sale</option>
+                      </select>
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
-                      <input type="text" name="bedrooms" class="form-control form-control-lg form-control-a" placeholder="bedrooms" required>
-                    </div>
-                  </div>
-                  
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <input type="text" name="bathrooms" class="form-control form-control-lg form-control-a" placeholder="bathrooms" required>
+                      <input type="number" name="price" class="form-control form-control-lg form-control-a" placeholder="price" required>
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
-                      <input type="text" name="price" class="form-control form-control-lg form-control-a" placeholder="price" required>
+                      <input type="number" name="available_days" class="form-control form-control-lg form-control-a" placeholder="available days" required>
                     </div>
                   </div>
                   <div class="col-md-12 my-3">
@@ -89,7 +110,7 @@
                   </div>
 
                   <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-a">SUBMIT</button>
+                    <button type="submit" class="btn btn-a">Add Property</button>
                   </div>
                 </div>
               </form>

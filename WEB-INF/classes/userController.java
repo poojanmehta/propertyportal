@@ -7,6 +7,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;  
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.sql.*;
+
 
 public class userController extends HttpServlet {
     private static final String USER = "/user";
@@ -35,12 +38,19 @@ public class userController extends HttpServlet {
             case USERLOG:
                 try {
                     userBean ub = new userBean();
-                    int result = ub.loginUser(request, response);
-                    if(result != 0) {
-                        request.getSession().setAttribute("User", request.getParameter("Firstname"));
-                        request.setAttribute("login_message", "Login Successful");
-                        RequestDispatcher rd = request.getRequestDispatcher("userprofile.jsp");
-                        rd.forward(request, response);
+                    ResultSet result = ub.loginUser(request, response);
+                    if(result.next()) {
+                        HttpSession session = request.getSession(false);
+                        if(session != null) {
+                            session.setAttribute("id", result.getString("id"));
+                            System.out.println(session.getAttribute("id"));
+                            session.setAttribute("email", result.getString("Email"));
+                            String email = (String) session.getAttribute("email");
+                            System.out.println(email);
+                            request.setAttribute("login_message", "Login Successful");
+                            RequestDispatcher rd = request.getRequestDispatcher("userprofile.jsp");
+                            rd.forward(request, response);
+                        }
                     } else {
                         request.setAttribute("login_message", "Invalid Cradentials");
                         RequestDispatcher rd = request.getRequestDispatcher("userlogin.jsp");

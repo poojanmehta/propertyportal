@@ -19,20 +19,23 @@ public class propertyDAO {
 
     public int addproperty(String query, property pr) throws SQLException {
 
-        PreparedStatement pst = this.con.prepareStatement(query);
-        pst.setString(2, pr.name);
-        pst.setFloat(4, pr.area);
-        pst.setFloat(5, pr.price);
-        pst.setInt(6, pr.floor);
-        pst.setInt(7, pr.bedrooms);
-        pst.setInt(8, pr.bathrooms);
-        pst.setInt(9, pr.fk_owner_id);
-        pst.setString(10, pr.city);
-        pst.setString(11, pr.locality);
-        pst.setString(12, pr.sell_type);
-        pst.setInt(13, pr.available_days);
+        PreparedStatement pst = this.con.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
+        pst.setString(1, pr.name);
+        pst.setFloat(2, pr.area);
+        pst.setFloat(3, pr.price);
+        pst.setInt(4, pr.floor);
+        pst.setInt(5, pr.bedrooms);
+        pst.setInt(6, pr.bathrooms);
+        pst.setString(7, pr.address);
+        pst.setInt(8, pr.fk_owner_id);
+        pst.setString(9, pr.city);
+        pst.setString(10, pr.locality);
+        pst.setString(11, pr.sell_type);
+        pst.setInt(12, pr.available_days);
         int result = pst.executeUpdate();
+
         return result;
+
     }
 
     public int viewproperty(String query) throws SQLException {
@@ -84,7 +87,13 @@ public class propertyDAO {
         return properties;
     }
 
-    public int updateproperty(String query) {
+    public int updateproperty(String query) throws SQLException {
         return 0;
+    }
+
+    public void addAmenities(String query) throws SQLException {
+        PreparedStatement pst = this.con.prepareStatement(query);
+        int i = pst.executeUpdate();
+        System.out.println(i);
     }
 }

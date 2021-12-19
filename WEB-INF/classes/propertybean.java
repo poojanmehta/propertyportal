@@ -27,11 +27,16 @@ public class propertybean
         pr.floor=Integer.parseInt(request.getParameter("floor"));
         pr.bedrooms=Integer.parseInt(request.getParameter("bedrooms"));
         pr.bathrooms=Integer.parseInt(request.getParameter("bathrooms"));
-        pr.fk_owner_id=Integer.parseInt(request.getParameter("fk_owner_id"));
         pr.sell_type=request.getParameter("sell_type");
         pr.address=request.getParameter("available_days");
 
-        String query = "INSERT INTO property(id,name,area, price, floor, bedrooms,bathrooms,address,fk_owner_id,city,locality,sell_type,available_days) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        System.out.println(pr.sell_type);
+
+        pr.fk_owner_id = Integer.parseInt((String)request.getSession(false).getAttribute("id"));
+
+        System.out.println((String)request.getSession(false).getAttribute("id"));
+
+        String query = "INSERT INTO property(name,area, price, floor, bedrooms,bathrooms,address,fk_owner_id,city,locality,sell_type,available_days) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
 
         int result = 0;
         try {
@@ -151,4 +156,21 @@ public class propertybean
         return result;
     }
 
+    public void addAmenities(HttpServletRequest request,HttpServletResponse response) {
+        int property_id = Integer.parseInt((String)request.getAttribute("property_id"));
+        String amenities[] = request.getParameterValues("amenities"); 
+        String query = "";
+        if (amenities != null && amenities.length != 0) {
+            query = "INSERT INTO property_amenities VALUES ";
+            for (int i = 0; i < amenities.length; i++) {
+                query += "(" + property_id + ",'" + amenities[i] + "'),";
+            }
+        }
+        try {
+            propertyDAO pd = new propertyDAO();
+            pd.addAmenities(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }   

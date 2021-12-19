@@ -3,6 +3,7 @@ package mypack;
 import java.io.*;
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;
+import java.sql.ResultSet;
 
 public class userBean {
 
@@ -114,13 +115,13 @@ public class userBean {
         return result;
     }
 
-    public int loginUser(HttpServletRequest request, HttpServletResponse response) {
+    public ResultSet loginUser(HttpServletRequest request, HttpServletResponse response) {
         setEmail(request.getParameter("Email"));
         setPassword(request.getParameter("Password"));
 
-        String query = "SELECT COUNT(*) FROM users where email = '" + request.getParameter("Email") + "' AND password = " + request.getParameter("Password");
+        String query = "SELECT * FROM users where email = '" + request.getParameter("Email") + "' AND password = " + request.getParameter("Password");
 
-        int result = 0;
+        ResultSet result = null;
         try {
             userDAO ud = new userDAO();
             result = ud.loginUser(query);

@@ -50,16 +50,11 @@ public class userDAO {
         return result;
     }
 
-    public int loginUser(String query) throws SQLException {
+    public ResultSet loginUser(String query) throws SQLException {
 
         Statement st = this.con.createStatement();
         ResultSet result = st.executeQuery(query);
         
-        if(result != null) {
-            result.last();
-            return result.getRow();
-        } else {
-            return 0;
-        }
+        return result;
     }
 }

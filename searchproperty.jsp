@@ -64,7 +64,30 @@
                                                 placeholder="Maximum">
                                         </div>
                                     </div>
-                                    <div class="col-md-12 text-center">
+                                        <div class="col-md-3 mb-3">
+                                            <div class="form-group">
+                                            <input type="checkbox" name="amenities" value="1"> Gym<BR>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3 mb-3">
+                                            <div class="form-group">
+                                            <input type="checkbox" name="amenities" value="2"> Swimmingpool<BR>
+                                            </div>
+                                        </div>
+                                            
+                                        <div class="col-md-3 mb-3">
+                                            <div class="form-group">
+                                            <input type="checkbox" name="amenities" value="3"> Security<BR>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-3 mb-3">
+                                            <div class="form-group">
+                                            <input type="checkbox" name="amenities" value="4"> Cafeteria<BR>
+                                            </div>
+                                        </div>
+                                    <div class="col-md-12 mb-3 text-center">
                                         <button type="submit" class="btn btn-a">Search</button>
                                     </div>
                                 </div>
