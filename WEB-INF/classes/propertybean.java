@@ -91,7 +91,56 @@ public class propertybean
 
     public ArrayList<property> listproperty(HttpServletRequest request,HttpServletResponse response)
     {   
+        boolean search_query = false;
         String query ="SELECT * FROM property";
+
+        String searchkey = request.getParameter("searchkey");
+        if(searchkey != null && searchkey.length() > 0) {
+            query += " WHERE name LIKE '%" + searchkey + "%'";
+            search_query = true;
+        }
+
+        float minimumprice = 0;
+        float maximumprice = 0;
+        String min_price_string = request.getParameter("minimumprice");
+        String max_price_string = request.getParameter("maximumprice");
+
+        if(min_price_string != null && min_price_string.length() > 0) {
+            minimumprice = Float.parseFloat(min_price_string);
+        }
+
+        if(max_price_string != null && max_price_string.length() > 0) {
+            maximumprice = Float.parseFloat(max_price_string);
+        }
+
+        System.out.println(min_price_string);
+        System.out.println(max_price_string);
+        System.out.println(minimumprice);
+        System.out.println(maximumprice);
+
+        if((minimumprice > 0) && (maximumprice > 0)) {
+            if(search_query) {
+                query += " AND price BETWEEN " + minimumprice + " AND " + maximumprice;
+            } else {
+                query += " WHERE price BETWEEN " + minimumprice + " AND " + maximumprice;
+            }
+            search_query = true;
+        } else if(minimumprice > 0) {
+            if(search_query) {
+                query += " AND price >= " + minimumprice;
+            } else {
+                query += " WHERE price >= " + minimumprice;
+            }
+            search_query = true;
+        } else if(maximumprice > 0) {
+            if(search_query) {
+                query += " AND price <= " + maximumprice;
+            } else {
+                query += " WHERE price <= " + maximumprice;
+            }
+            search_query = true;
+        }
+ 
         ArrayList<property> result = new ArrayList<property>();
         try {
             propertyDAO pd = new propertyDAO();

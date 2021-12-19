@@ -40,14 +40,28 @@
             <div class="row">
                 <div class="col-sm-12 section-t8">
                     <div class="row">
-                        <div class="col-md-7">
+                        <div class="col-md-12">
                             <form action="listproperty" method="post" role="form" class="php-email-form">
                                 <div class="row">
-                                    <div class="col-md-6 mb-3">
+                                    <div class="col-md-12 mb-3">
                                         <div class="form-group">
                                             <input type="text" name="searchkey"
                                                 class="form-control form-control-lg form-control-a"
-                                                placeholder="Search you dream property" required>
+                                                placeholder="Search you dream property">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-group">
+                                            <input type="number" name="minimumprice"
+                                                class="form-control form-control-lg form-control-a"
+                                                placeholder="Minimum">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="form-group">
+                                            <input type="number" name="maximumprice"
+                                                class="form-control form-control-lg form-control-a"
+                                                placeholder="Maximum">
                                         </div>
                                     </div>
                                     <div class="col-md-12 text-center">
