@@ -1,30 +1,30 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>EstateAgency Bootstrap Template - Index</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+  <title>ADD PROPERTY</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-    <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
 
-    <!-- =======================================================
+  <!-- =======================================================
   * Template Name: EstateAgency - v4.7.0
   * Template URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
   * Author: BootstrapMade.com
@@ -32,58 +32,70 @@
   ======================================================== -->
 </head>
 
-<body>
-    <section class="property-grid grid">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card-box-a card-shadow">
-                        <div class="img-box-a">
-                            <img src="assets/img/property-6.jpg" alt="" class="img-a img-fluid">
-                        </div>
-                        <div class="card-overlay">
-                            <div class="card-overlay-a-content">
-                                <div class="card-header-a">
-                                    <h2 class="card-title-a">
-                                        <a href="#">204 Mount
-                                            <br /> Olive Road Two</a>
-                                    </h2>
-                                </div>
-                                <div class="card-body-a">
-                                    <div class="price-box d-flex">
-                                        <span class="price-a">rent | $ 12.000</span>
-                                    </div>
-                                    <a href="property-single.html" class="link-a">Click here to view
-                                        <span class="bi bi-chevron-right"></span>
-                                    </a>
-                                </div>
-                                <div class="card-footer-a">
-                                    <ul class="card-info d-flex justify-content-around">
-                                        <li>
-                                            <h4 class="card-info-title">Area</h4>
-                                            <span>340m
-                                                <sup>2</sup>
-                                            </span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Beds</h4>
-                                            <span>2</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Baths</h4>
-                                            <span>4</span>
-                                        </li>
-                                        <li>
-                                            <h4 class="card-info-title">Garages</h4>
-                                            <span>1</span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
+<section class="contact">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 section-t8">
+          <div class="row">
+            <div class="col-md-7">
+              <form action="addproperty" method="post" role="form" class="php-email-form">
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input type="text" name="name" class="form-control form-control-lg form-control-a" placeholder="Name" required>
                     </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input type="text" name="address" class="form-control form-control-lg form-control-a" placeholder="address" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input type="text" name="floor" class="form-control form-control-lg form-control-a" placeholder="floor" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input name="locality" type="text" class="form-control form-control-lg form-control-a" placeholder="locality" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input type="text" name="city" class="form-control form-control-lg form-control-a" placeholder="City" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input type="text" name="bedrooms" class="form-control form-control-lg form-control-a" placeholder="bedrooms" required>
+                    </div>
+                  </div>
+                  
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input type="text" name="bathrooms" class="form-control form-control-lg form-control-a" placeholder="bathrooms" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input type="text" name="price" class="form-control form-control-lg form-control-a" placeholder="price" required>
+                    </div>
+                  </div>
+                  <div class="col-md-12 my-3">
+                    <div class="mb-3"></div>
+                      <div class="error-message"></div>
+                      <div class="sent-message">Your property details have been stored. Thank you!</div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 text-center">
+                    <button type="submit" class="btn btn-a">SUBMIT</button>
+                  </div>
                 </div>
+              </form>
             </div>
+          </div>
         </div>
-    </section>
-</body>
+      </div>
+    </div>
+  </section><!-- End Contact Single-->

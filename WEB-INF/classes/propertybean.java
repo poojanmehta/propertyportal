@@ -75,7 +75,7 @@ public class propertybean
     public int viewproperty(HttpServletRequest request,HttpServletResponse response)
     {   
         property pr =new property();
-        String query ="SELECT * FROM property";
+        String query ="SELECT * FROM property where id="+request.getParameter;
         int result = 0;
         try {
             propertyDAO pd = new propertyDAO();

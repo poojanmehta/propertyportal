@@ -17,48 +17,36 @@ public class propertyDAO {
 
     public int addproperty(String query, property pr) throws SQLException {
 
-        PreparedStatement pst = this.con.prepareStatement(query);
+        PreparedStatement pst = pr.con.prepareStatement(query);
         pst.setString(1, pr.id);
-        pst.setString(2, pb.getname());
-        pst.setString(3, pb.getEmail());
-        pst.setString(4, pb.getarea());
-        pst.setString(5, pb.getprice());
-        pst.setString(6, pb.getfloor());
-        pst.setString(7, pb.getbedrooms());
-        pst.setString(8, pb.getbathrooms());
-        pst.setString(9, pb.getfk_owner_id());
-        pst.setString(10, pb.getcity());
-        pst.setString(11, pb.getlocality());
-        pst.setString(12, pb.getsell_type());
-        pst.setString(13, pb.getavailable_days());
+        pst.setString(2, pr.name);
+        pst.setString(3, pr.Email);
+        pst.setString(4, pr.area);
+        pst.setString(5, pr.price);
+        pst.setString(6, pr.floor);
+        pst.setString(7, pr.bedrooms);
+        pst.setString(8, pr.bathrooms);
+        pst.setString(9, pr.fk_owner_id);
+        pst.setString(10, pr.city);
+        pst.setString(11, pr.locality);
+        pst.setString(12, pr.sell_type);
+        pst.setString(13, pr.available_days);
         int result = pst.executeUpdate();
         return result;
     }
 
-    public int viewproperty(String query, propertybean pb) throws SQLException {
+    public int viewproperty(String query, int id) throws SQLException {
 
         PreparedStatement pst = this.con.prepareStatement(query);
-        pst.setString(1, pb.getid());
-        pst.setString(2, pb.getname());
-        pst.setString(3, pb.getEmail());
-        pst.setString(4, pb.getarea());
-        pst.setString(5, pb.getprice());
-        pst.setString(6, pb.getfloor());
-        pst.setString(7, pb.getbedrooms());
-        pst.setString(8, pb.getbathrooms());
-        pst.setString(9, pb.getfk_owner_id());
-        pst.setString(10, pb.getcity());
-        pst.setString(11, pb.getlocality());
-        pst.setString(12, pb.getsell_type());
-        pst.setString(13, pb.getavailable_days());
-        ResultSet result = pst.executeUpdate();
+        //condition
+        int result = pst.executeUpdate();
         return result;
     }
 
-    public int deleteproperty(String query, propertybean pb) throws SQLException {
+    public int deleteproperty(String query, int id) throws SQLException {
 
         PreparedStatement pst = this.con.prepareStatement(query);
-        
+       
         int result = pst.executeUpdate();
         return result;
     }
