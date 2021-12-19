@@ -1,6 +1,8 @@
 package mypack;
 
 import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;
 import java.sql.ResultSet;
@@ -20,13 +22,12 @@ public class propertybean
         pr.address=request.getParameter("address");
         pr.city=request.getParameter("city");
         pr.locality=request.getParameter("locality");
-        pr.area=request.getParameter("area");
-        pr.price=request.getParameter("price");
-        pr.id=request.getParameter("id");
-        pr.floor=request.getParameter("floor");
-        pr.bedrooms=request.getParameter("bedrooms");
-        pr.bathrooms=request.getParameter("bathrooms");
-        pr.fk_owner_id=request.getParameter("fk_owner_id");
+        pr.area=Float.parseFloat(request.getParameter("area"));
+        pr.price=Float.parseFloat(request.getParameter("price"));
+        pr.floor=Integer.parseInt(request.getParameter("floor"));
+        pr.bedrooms=Integer.parseInt(request.getParameter("bedrooms"));
+        pr.bathrooms=Integer.parseInt(request.getParameter("bathrooms"));
+        pr.fk_owner_id=Integer.parseInt(request.getParameter("fk_owner_id"));
         pr.sell_type=request.getParameter("sell_type");
         pr.address=request.getParameter("available_days");
 
@@ -46,6 +47,7 @@ public class propertybean
     public int updateproperty(HttpServletRequest request,HttpServletResponse response)
     {
         property pr =new property();
+        String query = "";
         int result = 0;
         try {
             propertyDAO pd = new propertyDAO();
@@ -75,7 +77,7 @@ public class propertybean
     public int viewproperty(HttpServletRequest request,HttpServletResponse response)
     {   
         property pr =new property();
-        String query ="SELECT * FROM property where id="+request.getParameter;
+        String query ="SELECT * FROM property where id="+request.getParameter("id");
         int result = 0;
         try {
             propertyDAO pd = new propertyDAO();
@@ -87,9 +89,10 @@ public class propertybean
     
     }
 
-    public ResultSet listproperty(HttpServletRequest request,HttpServletResponse response)
+    public ArrayList<property> listproperty(HttpServletRequest request,HttpServletResponse response)
     {   
-        String query ="SHOW * FROM property";
+        String query ="SELECT * FROM property";
+        ArrayList<property> result = new ArrayList<property>();
         try {
             propertyDAO pd = new propertyDAO();
             result = pd.listproperty(query);

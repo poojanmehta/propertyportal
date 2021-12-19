@@ -37,5 +37,24 @@
     <url-pattern>/userregister</url-pattern>
     <url-pattern>/userlogin</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>property</servlet-name>
+    <servlet-class>mypack.propertyController</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>property</servlet-name>
+    <url-pattern>/listproperty</url-pattern>
+    <url-pattern>/addproperty</url-pattern>
+    <url-pattern>/deleteproperty</url-pattern>
+    <url-pattern>/viewproperty</url-pattern>
+    <url-pattern>/updateproperty</url-pattern>
+
+  </servlet-mapping>
+
+  <!-- <file-mapping-list>
+    <property-file>/property.jsp</property-file>
+  </file-mapping-list> -->
   
 </web-app>
