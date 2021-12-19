@@ -26,7 +26,7 @@ public class property {
         this.bathrooms = bathrooms;
         this.fk_owner_id = fk_owner_id;
         this.sell_type = sell_type;
-        this.available_days = available_days;
+        this.available_days =  ;
 
     }
 }
