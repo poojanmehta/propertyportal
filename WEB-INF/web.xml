@@ -50,6 +50,8 @@
     <url-pattern>/deleteproperty</url-pattern>
     <url-pattern>/viewproperty</url-pattern>
     <url-pattern>/updateproperty</url-pattern>
+    <url-pattern>/addamenities</url-pattern>
+
 
   </servlet-mapping>
 

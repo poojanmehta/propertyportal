@@ -37,34 +37,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 section-t8">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <h2>Add Amenities for your property</h2>
-                            <div class="col-md-3 mb-3">
-                                <div class="form-group">
-                                    <input type="checkbox" name="amenities" value="1"> Gym<BR>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 mb-3">
-                                <div class="form-group">
-                                    <input type="checkbox" name="amenities" value="2"> Swimmingpool<BR>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 mb-3">
-                                <div class="form-group">
-                                    <input type="checkbox" name="amenities" value="3"> Security<BR>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 mb-3">
-                                <div class="form-group">
-                                    <input type="checkbox" name="amenities" value="4"> Cafeteria<BR>
-                                </div>
-                            </div>
+                    <form action="addamenities" method="post" role="form" class="php-email-form"></form>
+                    <h2>Add Amenities
+                        for your property</h2>
+                    <div class="col-md-3 mb-3">
+                        <div class="form-group">
+                            <input type="checkbox" name="amenities" value="1"> Gym<BR>
                         </div>
                     </div>
+
+                    <div class="col-md-3 mb-3">
+                        <div class="form-group">
+                            <input type="checkbox" name="amenities" value="2"> Swimmingpool<BR>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <div class="form-group">
+                            <input type="checkbox" name="amenities" value="3"> Security<BR>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 mb-3">
+                        <div class="form-group">
+                            <input type="checkbox" name="amenities" value="4"> Cafeteria<BR>
+                        </div>
+                    </div>
+                    <div class="col-md-12 text-center">
+                        <button type="submit" class="btn btn-a">Add Amenities</button>
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;
-import java.sql.ResultSet;
+import java.sql.*;
 
 public class propertybean
 {
@@ -156,8 +156,11 @@ public class propertybean
         return result;
     }
 
-    public void addAmenities(HttpServletRequest request,HttpServletResponse response) {
-        int property_id = Integer.parseInt((String)request.getAttribute("property_id"));
+    public void addAmenities(HttpServletRequest request,HttpServletResponse response) throws SQLException{
+        String property_id_query = "SELECT * FROM property ORDER BY id DESC LIMIT 1";
+        propertyDAO pdo = new propertyDAO();
+        Statement st = pdo.con.createStatement();
+        int property_id = st.executeUpdate(property_id_query);
         String amenities[] = request.getParameterValues("amenities"); 
         String query = "";
         if (amenities != null && amenities.length != 0) {

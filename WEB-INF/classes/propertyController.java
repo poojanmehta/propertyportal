@@ -9,6 +9,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 
 public class propertyController extends HttpServlet {
 
@@ -94,10 +96,16 @@ public class propertyController extends HttpServlet {
         break;
       case AMEPROP:
         try {
-            propertybean pb = new propertybean();
-            pb.addAmenities(request, response);
-            RequestDispatcher rd = request.getRequestDispatcher("userprofile.jsp");
-            rd.forward(request, response);
+            HttpSession session = request.getSession(false);
+            if(session.getAttribute("id") == null) {
+                RequestDispatcher rd = request.getRequestDispatcher("userlogin.jsp");
+                rd.forward(request, response);
+            } else {
+                propertybean pb = new propertybean();
+                pb.addAmenities(request, response);
+                RequestDispatcher rd = request.getRequestDispatcher("userprofile.jsp");
+                rd.forward(request, response);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
