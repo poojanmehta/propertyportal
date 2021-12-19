@@ -9,9 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class propertyController extends HttpServlet {
-    private static final String USER = "/user";
-    private static final String USERREG = "/userregister";
-    private static final String USERLOG = "/userlogin";
+    private static final String VIEWPROP = "/viewproperty";
+    private static final String LISTPROP = "/listproperty";
+    private static final String UPDATEPROP = "/updateproperty";
+    private static final String ADDPROP = "/addproperty";
+    private static final String USERLOG = "/delproperty";
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         String path = request.getServletPath();
@@ -59,11 +62,11 @@ public class propertyController extends HttpServlet {
             case LISTPROP:
                 try {
                     propertybean pb = new propertybean();
-                    int result = pb.addproperty(request, response);
-                    if(result == 0) {
-                        System.out.println("FAILURE");
-                    } else {
-                        System.out.println("SUCCESS");
+                    ResultSet result = pb.listproperty(request, response);
+                    if(result != null) {
+                        request.setAttribute("property_data", result);
+                        RequestDispatcher rd = request.getRequestDispatcher("property.jsp");
+                        rd.forward(request, response);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

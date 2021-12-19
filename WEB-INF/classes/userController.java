@@ -12,6 +12,8 @@ public class userController extends HttpServlet {
     private static final String USER = "/user";
     private static final String USERREG = "/userregister";
     private static final String USERLOG = "/userlogin";
+    private static final String CHECKLOG = "/checklogin";
+
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         String path = request.getServletPath();
@@ -47,6 +49,7 @@ public class userController extends HttpServlet {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+            break;
         }
 
         // try {

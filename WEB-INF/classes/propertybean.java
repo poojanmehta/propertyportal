@@ -3,6 +3,7 @@ package mypack;
 import java.io.*;
 import javax.servlet.http.HttpServletRequest;  
 import javax.servlet.http.HttpServletResponse;
+import java.sql.ResultSet;
 
 public class propertybean
 {
@@ -29,14 +30,12 @@ public class propertybean
         pr.sell_type=request.getParameter("sell_type");
         pr.address=request.getParameter("available_days");
 
-
         String query = "INSERT INTO property(id,name,area, price, floor, bedrooms,bathrooms,address,fk_owner_id,city,locality,sell_type,available_days) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
 
         int result = 0;
         try {
             propertyDAO pd = new propertyDAO();
-            result = pd.addproperty(query, this);
+            result = pd.addproperty(query, pr);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -88,11 +87,9 @@ public class propertybean
     
     }
 
-    public int listproperty(HttpServletRequest request,HttpServletResponse response)
+    public ResultSet listproperty(HttpServletRequest request,HttpServletResponse response)
     {   
-        property pr =new property();
-        String query ="SHOW TABLES";
-        int result = 0;
+        String query ="SHOW * FROM property";
         try {
             propertyDAO pd = new propertyDAO();
             result = pd.listproperty(query);
@@ -100,7 +97,6 @@ public class propertybean
             e.printStackTrace();
         }
         return result;
-    
     }
 
 }   
