@@ -1,3 +1,10 @@
+<%@ page import = "java.io.*,java.util.*,java.sql.*"%>
+<%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
+<%@ page import="mypack.property"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/sql" prefix = "sql"%>
+<% ArrayList<property> property_data = (ArrayList<property>)request.getAttribute("property_data");
+%>
 <html lang="en">
 
 <head>
@@ -33,130 +40,126 @@
 </head>
 
 <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
-    <div class="container">
-      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <a class="navbar-brand text-brand">PROPERTY<span class="color-b">PORTAL</span></a>
+  <div class="container">
+    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault"
+      aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <a class="navbar-brand text-brand">PROPERTY<span class="color-b">PORTAL</span></a>
 
-      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
-        <ul class="navbar-nav">
+    <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+      <ul class="navbar-nav">
 
-          <li class="nav-item">
-            <a class="nav-link " href="index.html">Home</a>
-          </li>
+        <li class="nav-item">
+          <a class="nav-link " href="index.html">Home</a>
+        </li>
 
-          <li class="nav-item">
-            <a class="nav-link " href="">Account</a>
-          </li>
+        <li class="nav-item">
+          <a class="nav-link " href="">Account</a>
+        </li>
 
         </li>
-        </ul>
-      </div>
-
-      <button type="button" href="property.jsp" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
-        <i class="bi bi-search"></i>
-      </button>
-
+      </ul>
     </div>
-  </nav><!-- End Header/Navbar -->
 
+    <button type="button" href="property.jsp" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse"
+      data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
+      <i class="bi bi-search"></i>
+    </button>
 
-<section class="contact">
+  </div>
+</nav><!-- End Header/Navbar -->
+
+<body>
+  <section class="property-grid grid">
     <div class="container">
       <div class="row">
-        <div class="col-lg-12 section-t8">
-          <div class="row">
-            <div class="col-md-7">
-              <form action="addproperty" method="post" role="form" class="php-email-form">
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <input type="text" name="name" class="form-control form-control-lg form-control-a" placeholder="Name" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <input type="text" name="address" class="form-control form-control-lg form-control-a" placeholder="address" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <input type="text" name="floor" class="form-control form-control-lg form-control-a" placeholder="floor" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <input name="locality" type="text" class="form-control form-control-lg form-control-a" placeholder="locality" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <input type="text" name="city" class="form-control form-control-lg form-control-a" placeholder="City" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <input type="text" name="bedrooms" class="form-control form-control-lg form-control-a" placeholder="bedrooms" required>
-                    </div>
-                  </div>
-                  
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <input type="text" name="bathrooms" class="form-control form-control-lg form-control-a" placeholder="bathrooms" required>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <input type="text" name="price" class="form-control form-control-lg form-control-a" placeholder="price" required>
-                    </div>
-                  </div>
-                  <div class="col-md-12 my-3">
-                    <div class="mb-3"></div>
-                      <div class="error-message"></div>
-                      <div class="sent-message">Your property details have been stored. Thank you!</div>
-                    </div>
-                  </div>
+        <% for(property row : property_data) { %>
 
-                  <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-a">SUBMIT</button>
+          <div class="col-md-4">
+            <div class="card-box-a card-shadow">
+              <div class="img-box-a">
+                <img src="assets/img/property-8.jpg" alt="" class="img-a img-fluid">
+              </div>
+              <div class="card-overlay">
+                <div class="card-overlay-a-content">
+                  <div class="card-header-a">
+                    <h2 class="card-title-a">
+                      <a href="#"><br />
+                        <% out.print(row.name); %>
+                      </a>
+                    </h2>
+                  </div>
+                  <div class="card-body-a">
+                    <div class="price-box d-flex">
+                      <span class="price-a">
+                        <% out.print(row.sell_type); %> | <% out.print(row.price); %>
+                      </span>
+                    </div>
+                    <a href="property-single.html" class="link-a">Click here to view
+                      <span class="bi bi-chevron-right"></span>
+                    </a>
+                  </div>
+                  <div class="card-footer-a">
+                    <ul class="card-info d-flex justify-content-around">
+                      <li>
+                        <h4 class="card-info-title">Area</h4>
+                        <span>
+                          <% out.print(row.area); %>m
+                            <sup>2</sup>
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Bedrooms</h4>
+                        <span>
+                          <% out.print(row.bedrooms); %>
+                        </span>
+                      </li>
+                      <li>
+                        <h4 class="card-info-title">Bathrooms</h4>
+                        <span>
+                          <% out.print(row.bathrooms); %>
+                        </span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
-        </div>
+
+          <% } %>
       </div>
-    </div>
-  </section><!-- End Contact Single-->
+  </section>
+</body>
 
 
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <nav class="nav-footer">
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a href="#">Home</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Account</a>
-              </li>
-            </ul>
-          </nav>
-          
-          <div class="copyright-footer">
-            <p class="copyright color-text-a">
-              &copy; Copyright
-              <span class="color-a">PROPERTY PORTAL</span> All Rights Reserved.
-            </p>
-          </div>
-         
-          
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <nav class="nav-footer">
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <a href="#">Home</a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#">Account</a>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="copyright-footer">
+          <p class="copyright color-text-a">
+            &copy; Copyright
+            <span class="color-a">PROPERTY PORTAL</span> All Rights Reserved.
+          </p>
         </div>
+
+
       </div>
     </div>
-  </footer><!-- End  Footer -->
+  </div>
+</footer><!-- End  Footer -->
