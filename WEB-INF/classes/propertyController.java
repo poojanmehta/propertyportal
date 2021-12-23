@@ -17,7 +17,7 @@ public class propertyController extends HttpServlet {
   private static final String LISTPROP = "/listproperty";
   private static final String UPDATEPROP = "/updateproperty";
   private static final String ADDPROP = "/addproperty";
-  private static final String DELPROP = "/delproperty";
+  private static final String DELPROP = "/deleteproperty";
   private static final String AMEPROP = "/addamenities";
   private static final String ADDWCH = "/addtowatchlist";
   private static final String USERPROP = "/userproperties";
@@ -56,19 +56,6 @@ public class propertyController extends HttpServlet {
           e.printStackTrace();
         }
         break;
-      // case DELPROP:
-      //   try {
-      //     propertybean pb = new propertybean();
-      //     int result = pb.deleteproperty(request, response);
-      //     if (result == 0) {
-      //       System.out.println("FAILURE");
-      //     } else {
-      //       System.out.println("SUCCESS");
-      //     }
-      //   } catch (Exception e) {
-      //     e.printStackTrace();
-      //   }
-      //   break;
       case VIEWPROP:
         try {
           propertybean pb = new propertybean();
@@ -201,13 +188,11 @@ public class propertyController extends HttpServlet {
       case DELPROP:
         try{
           propertybean pb = new propertybean();
-          int user_id = checkLogin(request);
           int property_id = Integer.parseInt(request.getParameter("id"));
           int result = 0;
           result = pb.deleteproperty(property_id);
-          RequestDispatcher rd = request.getRequestDispatcher("user.jsp");
-            rd.forward(request, response);
-           
+          RequestDispatcher rd = request.getRequestDispatcher("user");
+          rd.forward(request, response); 
         }
         catch (Exception e) {
 

@@ -56,7 +56,7 @@ public class propertyDAO {
 
     public ArrayList<property> listproperty (String query) throws SQLException{
         Statement st = this.con.createStatement();
-
+        System.out.println(query);
         ResultSet rst = st.executeQuery(query);
         ArrayList<property> properties = new ArrayList<property>();
 
@@ -78,6 +78,11 @@ public class propertyDAO {
             pr.available_days=rst.getInt("available_days");
 
             properties.add(pr);
+        }
+
+        for(property p:properties){
+
+            System.out.println(p.name);
         }
 
         return properties;

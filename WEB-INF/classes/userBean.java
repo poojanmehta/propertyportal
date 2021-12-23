@@ -131,4 +131,18 @@ public class userBean {
 
         return result;
     }
+
+    public ResultSet getUserDetails(int user_id) {
+        String query = "SELECT * FROM users WHERE id = " + user_id;
+        
+        ResultSet result = null;
+        try {
+            userDAO ud = new userDAO();
+            result = ud.getUserDetails(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 }

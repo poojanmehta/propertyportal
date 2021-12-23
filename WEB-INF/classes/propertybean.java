@@ -193,7 +193,9 @@ public class propertybean {
     }
 
     public ArrayList<property> listuserproperty(int login_id) {
-        String query = "SELECT * FROM users WHERE fk_owner_id = " + login_id;
+        System.out.println("listuserproperty");
+        System.out.println(login_id);
+        String query = "SELECT * FROM property WHERE fk_owner_id = " + login_id;
         ArrayList<property> result = new ArrayList<property>();
         try {
             propertyDAO pd = new propertyDAO();

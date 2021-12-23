@@ -57,4 +57,11 @@ public class userDAO {
         
         return result;
     }
+
+    public ResultSet getUserDetails(String query) throws SQLException {
+        Statement st = this.con.createStatement();
+        ResultSet result = st.executeQuery(query);
+
+        return result;
+    }
 }
