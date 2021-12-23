@@ -22,10 +22,10 @@ public class propertyController extends HttpServlet {
   private static final String ADDWCH = "/addtowatchlist";
   private static final String USERPROP = "/userproperties";
 
-  public int checkLogin() {
+  public int checkLogin(HttpServletRequest request) {
     HttpSession session = request.getSession(false);
     if (session != null) {
-      int id = session.getAttribute("id");
+      int id = Integer.parseInt((String)session.getAttribute("id"));
       if (id > 0) {
         return id;
       } else {
@@ -57,17 +57,17 @@ public class propertyController extends HttpServlet {
         }
         break;
       case DELPROP:
-        try {
-          propertybean pb = new propertybean();
-          int result = pb.deleteproperty(request, response);
-          if (result == 0) {
-            System.out.println("FAILURE");
-          } else {
-            System.out.println("SUCCESS");
-          }
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
+        // try {
+        //   propertybean pb = new propertybean();
+        //   int result = pb.deleteproperty(request, response);
+        //   if (result == 0) {
+        //     System.out.println("FAILURE");
+        //   } else {
+        //     System.out.println("SUCCESS");
+        //   }
+        // } catch (Exception e) {
+        //   e.printStackTrace();
+        // }
         break;
       case VIEWPROP:
         try {
@@ -148,11 +148,11 @@ public class propertyController extends HttpServlet {
         } catch (Exception e) {
 
         }
-      case USERPROP:
+      case USERPROP:  
         try {
-            int login_id = checkLogin();
-            if(login_id>0) {
-            userbean pb = new propertybean();
+            int login_id = checkLogin(request);
+            if(login_id > 0) {
+            propertybean pb = new propertybean();
             ArrayList<property> result = pb.listuserproperty(login_id);
             if (result != null) {
                 request.setAttribute("property_data", result);

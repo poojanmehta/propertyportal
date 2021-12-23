@@ -15,10 +15,10 @@ public class userController extends HttpServlet {
     private static final String USERREG = "/userregister";
     private static final String USERLOG = "/userlogin";
 
-    public int checkLogin() {
+    public int checkLogin(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session != null) {
-            int id = session.getAttribute("id");
+            int id = Integer.parseInt((String)session.getAttribute("id"));
             if (id > 0) {
                 return id;
             } else {

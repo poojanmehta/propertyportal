@@ -70,7 +70,7 @@
         <div class="col-lg-12 section-t8">
           <div class="row">
             <div class="col-md-8">
-              <form action="addproperty" method="post" role="form" class="php-email-form">
+              <form action="addproperty" enctype="multipart/form-data" method="post" role="form" class="php-email-form">
                 <div class="row">
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
@@ -89,6 +89,11 @@
                     <div class="form-group">
                       <textarea rows="2" name="address" class="form-control form-control-lg form-control-a" placeholder="address" required>
                       </textarea>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <input type="file" name="image">
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">

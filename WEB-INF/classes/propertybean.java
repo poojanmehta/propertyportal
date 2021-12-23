@@ -9,58 +9,62 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.*;
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import javax.servlet.http.Part;
 
 public class propertybean {
     public String name, city, address, locality;
     public int id, floor, bedrooms, bathrooms, fk_owner_id, sell_type, available_days;
     public float area, price;
 
-    public int addproperty(HttpServletRequest request, HttpServletResponse response) {
+    public int addproperty(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // String file_name = null;
+        // String file_name2="";
 
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
-        boolean isMultipartContent = ServletFileUpload.isMultipartContent(request);
-        if (!isMultipartContent) {
-            return 0;
-        }
-        FileItemFactory factory = new DiskFileItemFactory();
-        ServletFileUpload upload = new ServletFileUpload(factory);
-        try {
-            List < FileItem > fields = upload.parseRequest(request);
-            Iterator < FileItem > it = fields.iterator();
-            if (!it.hasNext()) {
-                return 0;
-            }
+        // response.setContentType("text/html");
+        // PrintWriter out = response.getWriter();
+        // boolean isMultipartContent = ServletFileUpload.isMultipartContent(request);
+        // if (!isMultipartContent) {
+        //     System.out.println("isMultipartContent");
+        //     return 0;
+        // }
+        // FileItemFactory factory = new DiskFileItemFactory();
+        // ServletFileUpload upload = new ServletFileUpload(factory);
+        // try {
+        //     List < FileItem > fields = upload.parseRequest(request);
+        //     Iterator < FileItem > it = fields.iterator();
+        //     if (!it.hasNext()) {
+        //         System.out.println("isMultipartContent");
+        //         return 0;
+        //     }
             
-            while (it.hasNext()) {
-                FileItem fileItem = it.next();
-                boolean isFormField = fileItem.isFormField();
-                if (isFormField) {
-                    if (file_name == null) {
-                        if (fileItem.getFieldName().equals("file_name")) {
-                        	file_name = fileItem.getString();
-                        }
-                    }
-                } else {
-                    if (fileItem.getSize() > 0) {
-                    //    fileItem.write(new File("E:\\uploaded_files\\" + fileItem.getName()));
-                    	
-                    	file_name2=fileItem.getName();
-                        fileItem.write(new File("C:\\Program Files (x86)\\Apache Software Foundation\\Tomcat 8.5\\webapps\\uploaded_files\\" + file_name2));
-                     }
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            out.println("<script type='text/javascript'>");
-            out.println("window.location.href='index.jsp?filename="+file_name2+"'");
-            out.println("</script>");
-            out.close();
-        }
+        //     while (it.hasNext()) {
+        //         FileItem fileItem = it.next();
+        //         boolean isFormField = fileItem.isFormField();
+        //         if (isFormField) {
+        //             if (file_name == null) {
+        //                 if (fileItem.getFieldName().equals("file_name")) {
+        //                 	file_name = fileItem.getString();
+        //                 }
+        //             }
+        //         } else {
+        //             if (fileItem.getSize() > 0) {                    	
+        //             	file_name2=fileItem.getName();
+        //                 fileItem.write(new File("C:\\Program Files (x86)\\Apache Software Foundation\\Tomcat 8.5\\webapps\\uploaded_files\\" + file_name2));
+        //              }
+        //         }
+        //     }
+        // } catch (Exception e) {
+        //     e.printStackTrace();
+        // } finally {
+        //     out.println("<script type='text/javascript'>");
+        //     out.println("window.location.href='index.jsp?filename="+file_name2+"'");
+        //     out.println("</script>");
+        //     out.close();
+        // }
 
         property pr = new property();
         pr.name = request.getParameter("name");
