@@ -91,6 +91,11 @@
                       </textarea>
                     </div>
                   </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <input type="file" name="image">
+                    </div>
+                  </div>
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
                       <input type="number" name="area" class="form-control form-control-lg form-control-a" placeholder="area" required>
