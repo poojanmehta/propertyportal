@@ -71,7 +71,7 @@
           <div class="row">
             <div class="col-md-7">
               <form action="userlogin" method="post" role="form" class="php-email-form">
-                <div class="row">s
+                <div class="row">
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
                       <input name="Email" type="email" class="form-control form-control-lg form-control-a" placeholder="Email" required>
