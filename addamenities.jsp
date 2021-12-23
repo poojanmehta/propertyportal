@@ -69,7 +69,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12 section-t8">
-                    <form action="addamenities" method="post" role="form" class="php-email-form"></form>
+                    <form action="addamenities" method="post" role="form" class="php-email-form">
                     <h2>Add Amenities
                         for your property</h2>
                     <div class="col-md-3 mb-3">

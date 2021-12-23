@@ -98,10 +98,16 @@
                         <% out.print(row.sell_type); %> | <% out.print(row.price); %>
                       </span>
                     </div>
+                    <div class="price-box d-flex">
+                      <span class="price-a">
+                        <a href="${pageContext.request.contextPath}/addtowatchlist?id=<%=row.id%>"> + watchlist </a>
+                      </span>
+                    </div>
                     <a href="property-single.html" class="link-a">Click here to view
                       <span class="bi bi-chevron-right"></span>
                     </a>
                   </div>
+                
                   <div class="card-footer-a">
                     <ul class="card-info d-flex justify-content-around">
                       <li>

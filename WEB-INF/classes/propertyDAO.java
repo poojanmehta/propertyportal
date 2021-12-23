@@ -79,10 +79,6 @@ public class propertyDAO {
 
             properties.add(pr);
         }
-        
-        for(property item:properties) {
-            System.out.println(item.name);
-        }
 
         return properties;
     }
@@ -95,5 +91,19 @@ public class propertyDAO {
         PreparedStatement pst = this.con.prepareStatement(query);
         int i = pst.executeUpdate();
         System.out.println(i);
+    }
+
+    public ResultSet checkWatchList(String query) throws SQLException{
+        ResultSet result;
+        PreparedStatement pst = this.con.prepareStatement(query);
+        result = pst.executeQuery();
+        return result;
+    }   
+
+    public int addToWatchList(String query) throws SQLException {
+        int result = 0;
+        PreparedStatement pst = this.con.prepareStatement(query);
+        result = pst.executeUpdate();
+        return result;
     }
 }

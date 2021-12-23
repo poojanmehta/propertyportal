@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
 public class propertyController extends HttpServlet {
 
   private static final String VIEWPROP = "/viewproperty";
@@ -20,9 +19,25 @@ public class propertyController extends HttpServlet {
   private static final String ADDPROP = "/addproperty";
   private static final String DELPROP = "/delproperty";
   private static final String AMEPROP = "/addamenities";
+  private static final String ADDWCH = "/addtowatchlist";
+  private static final String USERPROP = "/userproperties";
+
+  public int checkLogin() {
+    HttpSession session = request.getSession(false);
+    if (session != null) {
+      int id = session.getAttribute("id");
+      if (id > 0) {
+        return id;
+      } else {
+        return 0;
+      }
+    } else {
+      return 0;
+    }
+  }
 
   public void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+      throws ServletException, IOException {
     String path = request.getServletPath();
 
     switch (path) {
@@ -34,8 +49,7 @@ public class propertyController extends HttpServlet {
             System.out.println("FAILURE");
           } else {
             RequestDispatcher rd = request.getRequestDispatcher(
-              "addamenities.jsp"
-            );
+                "addamenities.jsp");
             rd.forward(request, response);
           }
         } catch (Exception e) {
@@ -96,14 +110,57 @@ public class propertyController extends HttpServlet {
         break;
       case AMEPROP:
         try {
-            HttpSession session = request.getSession(false);
-            if(session.getAttribute("id") == null) {
-                RequestDispatcher rd = request.getRequestDispatcher("userlogin.jsp");
+          // HttpSession session = request.getSession(false);
+          // if (session.getAttribute("id") == null) {
+          //   RequestDispatcher rd = request.getRequestDispatcher("userlogin.jsp");
+          //   rd.forward(request, response);
+          // } else {
+          //   propertybean pb = new propertybean();
+          //   pb.addAmenities(request, response);
+          //   RequestDispatcher rd = request.getRequestDispatcher("userprofile.jsp");
+          //   rd.forward(request, response);
+          // }
+          propertybean pb = new propertybean();
+          pb.addAmenities(request, response);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      case ADDWCH:
+        try {
+          HttpSession session = request.getSession(false);
+          if (session != null) {
+            propertybean pb = new propertybean();
+            int user_id = Integer.parseInt((String)session.getAttribute("id"));
+            int property_id = Integer.parseInt(request.getParameter("id"));
+            int result = 0;
+            result = pb.addToWatchList(property_id, user_id);
+            if(result == 1) {
+              request.setAttribute("watchlist_message", "Added to watchlist");
+            }  else {
+              request.setAttribute("watchlist_message", "Error Occured");
+            }     
+            RequestDispatcher rd = request.getRequestDispatcher("property.jsp");
+            rd.forward(request, response);
+          } else {
+            RequestDispatcher rd = request.getRequestDispatcher("userlogin.jsp");
+            rd.forward(request, response);
+          }
+        } catch (Exception e) {
+
+        }
+      case USERPROP:
+        try {
+            int login_id = checkLogin();
+            if(login_id>0) {
+            userbean pb = new propertybean();
+            ArrayList<property> result = pb.listuserproperty(login_id);
+            if (result != null) {
+                request.setAttribute("property_data", result);
+                RequestDispatcher rd = request.getRequestDispatcher("property.jsp");
                 rd.forward(request, response);
+            }
             } else {
-                propertybean pb = new propertybean();
-                pb.addAmenities(request, response);
-                RequestDispatcher rd = request.getRequestDispatcher("userprofile.jsp");
+                RequestDispatcher rd = request.getRequestDispatcher("userlogin.jsp");
                 rd.forward(request, response);
             }
         } catch (Exception e) {
@@ -111,4 +168,36 @@ public class propertyController extends HttpServlet {
         }
     }
   }
+
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    String path = request.getServletPath();
+
+    switch (path) {
+
+      case ADDWCH:
+        try {
+          HttpSession session = request.getSession(false);
+          if (session != null) {
+            propertybean pb = new propertybean();
+            int user_id = Integer.parseInt((String) session.getAttribute("id"));
+            int property_id = Integer.parseInt(request.getParameter("id"));
+            int result = 0;
+            result = pb.addToWatchList(property_id, user_id);
+            if (result == 1) {
+              request.setAttribute("watchlist_message", "Added to watchlist");
+            } else {
+              request.setAttribute("watchlist_message", "Error Occured");
+            }
+            RequestDispatcher rd = request.getRequestDispatcher("property.jsp");
+            rd.forward(request, response);
+          } else {
+            RequestDispatcher rd = request.getRequestDispatcher("userlogin.jsp");
+            rd.forward(request, response);
+          }
+        } catch (Exception e) {
+
+        }
+    }
+  }
+
 }
