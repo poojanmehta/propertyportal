@@ -201,7 +201,7 @@ public class propertyController extends HttpServlet {
       case DELPROP:
         try{
           propertybean pb = new propertybean();
-          int user_id = checkLogin();
+          int user_id = checkLogin(request);
           int property_id = Integer.parseInt(request.getParameter("id"));
           int result = 0;
           result = pb.deleteproperty(property_id);

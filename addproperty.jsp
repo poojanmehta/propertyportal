@@ -70,7 +70,7 @@
         <div class="col-lg-12 section-t8">
           <div class="row">
             <div class="col-md-8">
-              <form action="addproperty" enctype="multipart/form-data" method="post" role="form" class="php-email-form">
+              <form action="addproperty" method="post" role="form" class="php-email-form">
                 <div class="row">
                   <div class="col-md-6 mb-3">
                     <div class="form-group">

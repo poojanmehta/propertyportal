@@ -53,7 +53,7 @@ public class propertybean {
         //         } else {
         //             if (fileItem.getSize() > 0) {                    	
         //             	file_name2=fileItem.getName();
-        //                 fileItem.write(new File("C:\\Program Files (x86)\\Apache Software Foundation\\Tomcat 8.5\\webapps\\uploaded_files\\" + file_name2));
+        //                 fileItem.write(new File("C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\uploaded_files\\" + file_name2));
         //              }
         //         }
         //     }
