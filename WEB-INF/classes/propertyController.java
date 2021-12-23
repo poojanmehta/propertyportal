@@ -56,19 +56,19 @@ public class propertyController extends HttpServlet {
           e.printStackTrace();
         }
         break;
-      case DELPROP:
-        try {
-          propertybean pb = new propertybean();
-          int result = pb.deleteproperty(request, response);
-          if (result == 0) {
-            System.out.println("FAILURE");
-          } else {
-            System.out.println("SUCCESS");
-          }
-        } catch (Exception e) {
-          e.printStackTrace();
-        }
-        break;
+      // case DELPROP:
+      //   try {
+      //     propertybean pb = new propertybean();
+      //     int result = pb.deleteproperty(request, response);
+      //     if (result == 0) {
+      //       System.out.println("FAILURE");
+      //     } else {
+      //       System.out.println("SUCCESS");
+      //     }
+      //   } catch (Exception e) {
+      //     e.printStackTrace();
+      //   }
+      //   break;
       case VIEWPROP:
         try {
           propertybean pb = new propertybean();
@@ -195,6 +195,21 @@ public class propertyController extends HttpServlet {
             rd.forward(request, response);
           }
         } catch (Exception e) {
+
+        }
+
+      case DELPROP:
+        try{
+          propertybean pb = new propertybean();
+          int user_id = checkLogin();
+          int property_id = Integer.parseInt(request.getParameter("id"));
+          int result = 0;
+          result = pb.deleteproperty(property_id);
+          RequestDispatcher rd = request.getRequestDispatcher("user.jsp");
+            rd.forward(request, response);
+           
+        }
+        catch (Exception e) {
 
         }
     }
