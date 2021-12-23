@@ -95,7 +95,7 @@
                                                 class="form-control form-control-lg form-control-a"
                                                 placeholder="Maximum">
                                         </div>
-                                    </div>
+                                    <!-- </div>
                                         <div class="col-md-3 mb-3">
                                             <div class="form-group">
                                             <input type="checkbox" name="amenities" value="1"> Gym<BR>
@@ -118,7 +118,7 @@
                                             <div class="form-group">
                                             <input type="checkbox" name="amenities" value="4"> Cafeteria<BR>
                                             </div>
-                                        </div>
+                                        </div> -->
                                     <div class="col-md-12 mb-3 text-center">
                                         <button type="submit" class="btn btn-a">Search</button>
                                     </div>

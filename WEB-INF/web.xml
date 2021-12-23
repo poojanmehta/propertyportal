@@ -52,6 +52,8 @@
     <url-pattern>/updateproperty</url-pattern>
     <url-pattern>/addamenities</url-pattern>
     <url-pattern>/addtowatchlist</url-pattern>
+    <url-pattern>/editproperty</url-pattern>
+    <url-pattern>/allproperties</url-pattern>
 
 
   </servlet-mapping>

@@ -1,3 +1,10 @@
+<%@ page import = "java.io.*,java.util.*"%>
+<%@ page import = "javax.servlet.http.*,javax.servlet.*" %>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="mypack.property"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix = "c"%>
+<% ResultSet property_data=(ResultSet)request.getAttribute("property_data"); %>
+
 <html lang="en">
 
 <head>
@@ -68,48 +75,77 @@
         <div class="col-lg-12 section-t8">
           <div class="row">
             <div class="col-md-7">
-              <form action="addproperty" method="post" role="form" class="php-email-form">
-                <div class="row">
+              <form action="editproperty" method="post" role="form" class="php-email-form">
+                <% property_data.absolute(1); %>
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
-                      <input type="text" name="name" class="form-control form-control-lg form-control-a" placeholder="Name" required>
+                      <input type="text" name="name" value="<c:out value='${property_data.getString("name")}' />" class="form-control form-control-lg form-control-a" placeholder="Name" required>
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
-                      <input type="text" name="address" class="form-control form-control-lg form-control-a" placeholder="address" required>
+                      <input type="text" rows="3" name="city" value="<c:out value='${property_data.getString("city")}' />" class="form-control form-control-lg form-control-a" placeholder="city" required>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label class="pb-2" for="Type">Enter Address</label>
+                  </div>
+                  <div class="col-md-8 mb-3">
+                    <div class="form-group">
+                      <input rows="2" name="address" value="<c:out value='${property_data.getString("address")}' />" class="form-control form-control-lg form-control-a" placeholder="address" required>
+                    </input>
+                    </div>
+                  </div>
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <input type="file" name="image">
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
-                      <input type="text" name="floor" class="form-control form-control-lg form-control-a" placeholder="floor" required>
+                      <input type="number" name="area" value="<c:out value='${property_data.getString("area")}' />" class="form-control form-control-lg form-control-a" placeholder="area" required>
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
-                      <input name="locality" type="text" class="form-control form-control-lg form-control-a" placeholder="locality" required>
+                      <input type="number" name="floor" value="<c:out value='${property_data.getString("floor")}' />" class="form-control form-control-lg form-control-a" placeholder="floor" required>
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
-                      <input type="text" name="city" class="form-control form-control-lg form-control-a" placeholder="City" required>
+                      <input type="number" name="bedrooms" value="<c:out value='${property_data.getString("bedrooms")}' />" class="form-control form-control-lg form-control-a" placeholder="bedrooms" required>
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
-                      <input type="text" name="bedrooms" class="form-control form-control-lg form-control-a" placeholder="bedrooms" required>
-                    </div>
-                  </div>
-                  
-                  <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                      <input type="text" name="bathrooms" class="form-control form-control-lg form-control-a" placeholder="bathrooms" required>
+                      <input type="number" name="bathrooms" value="<c:out value='${property_data.getString("bathrooms")}' />" class="form-control form-control-lg form-control-a" placeholder="bathrooms" required>
                     </div>
                   </div>
                   <div class="col-md-6 mb-3">
                     <div class="form-group">
-                      <input type="text" name="price" class="form-control form-control-lg form-control-a" placeholder="price" required>
+                      <input name="locality" type="text" value="<c:out value='${property_data.getString("locality")}' />" class="form-control form-control-lg form-control-a" placeholder="locality" required>
                     </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <select name="sell_type" value="<c:out value='${property_data.getString("sell_type")}' />" class="form-control form-select form-control-a" id="Type">
+                        <option value="rent">For Rent</option>
+                        <option value="sale">For Sale</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input type="number" name="price" value="<c:out value='${property_data.getString("price")}' />" class="form-control form-control-lg form-control-a" placeholder="price" required>
+                    </div>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <div class="form-group">
+                      <input type="number" name="available_days" value="<c:out value='${property_data.getString("available_days")}' />" class="form-control form-control-lg form-control-a" placeholder="available days" required>
+                    </div>
+                  </div>
+                  <div class="col-md-12 text-center">
+                    <input type="hidden" name="id" value="<c:out value='${property_data.getString("id")}' />"
                   </div>
 
                   <div class="col-md-12 text-center">

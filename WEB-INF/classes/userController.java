@@ -59,7 +59,7 @@ public class userController extends HttpServlet {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                break;
+            break;
             case USERREG:
                 try {
                     userBean ub = new userBean();
@@ -72,7 +72,7 @@ public class userController extends HttpServlet {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                break;
+            break;
         }
 
         // try {
@@ -112,7 +112,7 @@ public class userController extends HttpServlet {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
+            break;
         }
     }
 }

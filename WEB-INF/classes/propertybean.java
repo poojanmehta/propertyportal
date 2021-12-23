@@ -23,42 +23,43 @@ public class propertybean {
         // PrintWriter out = response.getWriter();
         // boolean isMultipartContent = ServletFileUpload.isMultipartContent(request);
         // if (!isMultipartContent) {
-        //     System.out.println("isMultipartContent");
-        //     return 0;
+        // System.out.println("isMultipartContent");
+        // return 0;
         // }
         // FileItemFactory factory = new DiskFileItemFactory();
         // ServletFileUpload upload = new ServletFileUpload(factory);
         // try {
-        //     List < FileItem > fields = upload.parseRequest(request);
-        //     Iterator < FileItem > it = fields.iterator();
-        //     if (!it.hasNext()) {
-        //         System.out.println("isMultipartContent");
-        //         return 0;
-        //     }
-            
-        //     while (it.hasNext()) {
-        //         FileItem fileItem = it.next();
-        //         boolean isFormField = fileItem.isFormField();
-        //         if (isFormField) {
-        //             if (file_name == null) {
-        //                 if (fileItem.getFieldName().equals("file_name")) {
-        //                 	file_name = fileItem.getString();
-        //                 }
-        //             }
-        //         } else {
-        //             if (fileItem.getSize() > 0) {                    	
-        //             	file_name2=fileItem.getName();
-        //                 fileItem.write(new File("C:\\Program Files\\Apache Software Foundation\\Tomcat 9.0\\webapps\\uploaded_files\\" + file_name2));
-        //              }
-        //         }
-        //     }
+        // List < FileItem > fields = upload.parseRequest(request);
+        // Iterator < FileItem > it = fields.iterator();
+        // if (!it.hasNext()) {
+        // System.out.println("isMultipartContent");
+        // return 0;
+        // }
+
+        // while (it.hasNext()) {
+        // FileItem fileItem = it.next();
+        // boolean isFormField = fileItem.isFormField();
+        // if (isFormField) {
+        // if (file_name == null) {
+        // if (fileItem.getFieldName().equals("file_name")) {
+        // file_name = fileItem.getString();
+        // }
+        // }
+        // } else {
+        // if (fileItem.getSize() > 0) {
+        // file_name2=fileItem.getName();
+        // fileItem.write(new File("C:\\Program Files\\Apache Software
+        // Foundation\\Tomcat 9.0\\webapps\\uploaded_files\\" + file_name2));
+        // }
+        // }
+        // }
         // } catch (Exception e) {
-        //     e.printStackTrace();
+        // e.printStackTrace();
         // } finally {
-        //     out.println("<script type='text/javascript'>");
-        //     out.println("window.location.href='index.jsp?filename="+file_name2+"'");
-        //     out.println("</script>");
-        //     out.close();
+        // out.println("<script type='text/javascript'>");
+        // out.println("window.location.href='index.jsp?filename="+file_name2+"'");
+        // out.println("</script>");
+        // out.close();
         // }
 
         property pr = new property();
@@ -72,7 +73,9 @@ public class propertybean {
         pr.bedrooms = Integer.parseInt(request.getParameter("bedrooms"));
         pr.bathrooms = Integer.parseInt(request.getParameter("bathrooms"));
         pr.sell_type = request.getParameter("sell_type");
-        pr.address = request.getParameter("available_days");
+        pr.available_days = Integer.parseInt(request.getParameter("available_days"));
+
+        System.out.println(pr.address);
 
         System.out.println(pr.sell_type);
 
@@ -86,19 +89,6 @@ public class propertybean {
         try {
             propertyDAO pd = new propertyDAO();
             result = pd.addproperty(query, pr);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
-    }
-
-    public int updateproperty(HttpServletRequest request, HttpServletResponse response) {
-        property pr = new property();
-        String query = "";
-        int result = 0;
-        try {
-            propertyDAO pd = new propertyDAO();
-            result = pd.updateproperty(query);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -128,7 +118,6 @@ public class propertybean {
             e.printStackTrace();
         }
         return result;
-
     }
 
     public ArrayList<property> listproperty(HttpServletRequest request, HttpServletResponse response) {
@@ -182,6 +171,18 @@ public class propertybean {
             search_query = true;
         }
 
+        ArrayList<property> result = new ArrayList<property>();
+        try {
+            propertyDAO pd = new propertyDAO();
+            result = pd.listproperty(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public ArrayList<property> allproperties(HttpServletRequest request, HttpServletResponse response) {
+        String query = "SELECT * FROM property";
         ArrayList<property> result = new ArrayList<property>();
         try {
             propertyDAO pd = new propertyDAO();
@@ -252,6 +253,47 @@ public class propertybean {
             String query = "INSERT INTO watchlist (property_id, user_id) values (" + property_id + "," + user_id + ")";
             result = pd.addToWatchList(query);
             return result;
+        }
+        return result;
+    }
+
+    public ResultSet getPropertyDetails(int property_id) throws SQLException {
+        String query = "SELECT * FROM property WHERE id = " + property_id;
+        propertyDAO pd = new propertyDAO();
+        ResultSet result = pd.getPropertyDetails(query);
+        return result;
+    }
+
+    public int updateProperty(HttpServletRequest request, HttpServletResponse response) throws SQLException {
+        
+        property pr = new property();
+        pr.id = Integer.parseInt(request.getParameter("id"));
+        pr.name = request.getParameter("name");
+        pr.address = request.getParameter("address");
+        pr.city = request.getParameter("city");
+        pr.locality = request.getParameter("locality");
+        pr.area = Float.parseFloat(request.getParameter("area"));
+        pr.price = Float.parseFloat(request.getParameter("price"));
+        pr.floor = Integer.parseInt(request.getParameter("floor"));
+        pr.bedrooms = Integer.parseInt(request.getParameter("bedrooms"));
+        pr.bathrooms = Integer.parseInt(request.getParameter("bathrooms"));
+        pr.sell_type = request.getParameter("sell_type");
+        pr.available_days = Integer.parseInt(request.getParameter("available_days"));
+
+        System.out.println(pr.sell_type);
+
+        pr.fk_owner_id = Integer.parseInt((String) request.getSession(false).getAttribute("id"));
+
+        System.out.println((String) request.getSession(false).getAttribute("id"));
+
+        String query = "UPDATE property SET name = ?, area = ?, price = ?, floor = ?, bedrooms = ?, bathrooms = ?, address = ?,fk_owner_id = ?, city = ?, locality = ?, sell_type = ?, available_days = ? WHERE id = ?";
+
+        int result = 0;
+        try {
+            propertyDAO pd = new propertyDAO();
+            result = pd.updateProperty(query, pr);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         return result;
     }

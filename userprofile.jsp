@@ -55,11 +55,11 @@
                     <ul class="navbar-nav">
 
                       <li class="nav-item">
-                        <a class="nav-link " href="index.html">Home</a>
+                        <a class="nav-link " href="searchproperty.jsp">Home</a>
                       </li>
 
                       <li class="nav-item">
-                        <a class="nav-link " href="">Account</a>
+                        <a class="nav-link " href="user">Account</a>
                       </li>
 
 
@@ -152,7 +152,7 @@
                         </div>
                         <div class="col-md-12 section-t8">
                           <div class="title-box-d">
-                            <h3 class="title-d">My Properties (6)</h3>
+                            <h3 class="title-d">My Properties</h3>
                           </div>
                         </div>
                         <div class="row property-grid grid">
@@ -192,7 +192,12 @@
                                       </div>
                                       <div class="price-box d-flex">
                                         <span class="price-a">
-                                          <a href="${pageContext.request.contextPath}/deleteproperty?id=<%=row.id%>"> + delete </a>
+                                          <a href="${pageContext.request.contextPath}/deleteproperty?id=<%=row.id%>"> delete </a>
+                                        </span>
+                                      </div>
+                                      <div class="price-box d-flex">
+                                        <span class="price-a">
+                                          <a href="${pageContext.request.contextPath}/updateproperty?id=<%=row.id%>"> update </a>
                                         </span>
                                       </div>
                                       <a href="property-single.html" class="link-a">Click here to view
