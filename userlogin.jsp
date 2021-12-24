@@ -94,7 +94,7 @@
                   </div>
 
                   <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-a">Register</button>
+                    <button type="submit" class="btn btn-a">Login</button>
                   </div>
                 </div>
               </form>

@@ -139,15 +139,17 @@
                               </div>
                           </div>
                         </div>
-                        <div class="col-md-12 col-lg-4">
-                          <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
-                            <ol class="breadcrumb">
-                              <div class="col-md-12 text-center">
-                                <button type="submit" class="btn btn-a">Logout</button>
-                              </div>
-                            </ol>
-                          </nav>
-                        </div>
+                        <form action="logout" method="post">
+                          <div class="col-md-12 col-lg-4">
+                            <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                              <ol class="breadcrumb">
+                                <div class="col-md-12 text-center">
+                                  <button type="submit" class="btn btn-a">Logout</button>
+                                </div>
+                              </ol>
+                            </nav>
+                          </div>
+                        </form>
                         <div class="col-md-12 section-t8">
                           <div class="title-box-d">
                             <h3 class="title-d">My Properties</h3>

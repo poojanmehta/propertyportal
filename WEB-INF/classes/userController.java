@@ -15,6 +15,7 @@ public class userController extends HttpServlet {
     private static final String USER = "/user";
     private static final String USERREG = "/userregister";
     private static final String USERLOG = "/userlogin";
+    private static final String LOGOUT = "/logout";
 
     public int checkLogin(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
@@ -73,6 +74,19 @@ public class userController extends HttpServlet {
                     e.printStackTrace();
                 }
             break;
+            case LOGOUT:
+                try {
+                    HttpSession session = request.getSession(false);
+                        if (session != null) {
+                            System.out.println("logout");
+                            session.removeAttribute("id");
+                            session.removeAttribute("email");
+                            RequestDispatcher rd = request.getRequestDispatcher("userlogin.jsp");
+                            rd.forward(request, response);
+                        }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
         }
 
         // try {
