@@ -39,35 +39,38 @@
   ======================================================== -->
 </head>
 <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
-    <div class="container">
-      <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-      <a class="navbar-brand text-brand">PROPERTY<span class="color-b">PORTAL</span></a>
+  <div class="container">
+    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <a class="navbar-brand text-brand">PROPERTY<span class="color-b">PORTAL</span></a>
 
-      <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
-        <ul class="navbar-nav">
+    <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
+      <ul class="navbar-nav">
 
-          <li class="nav-item">
-            <a class="nav-link " href="index.html">Home</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link " href="">Account</a>
-          </li>
-
+        <li class="nav-item">
+          <a class="nav-link " href="searchproperty.jsp">Home</a>
         </li>
-        </ul>
-      </div>
 
-      <button type="button" class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
-        <i class="bi bi-search"></i>
-      </button>
+        <li class="nav-item">
+          <a class="nav-link " href="user">Account</a>
+        </li>
 
+      </ul>
     </div>
-  </nav><!-- End Header/Navbar -->
+
+    <button type="button" href="searchproperty.jsp"
+      class="btn btn-b-n navbar-toggle-box navbar-toggle-box-collapse" data-bs-toggle="collapse"
+      data-bs-target="#navbarTogglerDemo01">
+      <i class="bi bi-search"></i>
+    </button>
+
+  </div>
+</nav><!-- End Header/Navbar -->
 
 <section class="contact">
     <div class="container">

@@ -62,8 +62,6 @@
                         <a class="nav-link " href="user">Account</a>
                       </li>
 
-
-                      </li>
                     </ul>
                   </div>
 
